@@ -6,6 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\FormTransactions.ts" />
+    <None Remove="ClientApp\src\app\hero\heroes.component.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\src\app\navigation\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
@@ -16,6 +22,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Business\Microgen.Business.Accounting\Microgen.Business.Accounting.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\hero\heroes.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\transactions\form.transaction.component.ts" />
   </ItemGroup>
 
 </Project>

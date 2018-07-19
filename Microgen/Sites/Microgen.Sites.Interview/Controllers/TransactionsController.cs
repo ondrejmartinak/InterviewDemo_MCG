@@ -1,4 +1,5 @@
 ﻿using Microgen.Business.Accounting.Exceptions;
+using BUSINESS_MODEL = Microgen.Business.Accounting.Models;
 using Microgen.Business.Accounting.Processors;
 using Microgen.Business.Accounting.Repositories;
 using Microgen.Sites.Interview.Models;
@@ -6,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System;
 
 namespace Microgen.Sites.Interview.Controllers
 {
@@ -22,18 +24,18 @@ namespace Microgen.Sites.Interview.Controllers
 
         // POST api/values
         [HttpPost]
-        public async Task<CustomResponse<IEnumerable<TransactionLine>>> Post([FromBody] IEnumerable<TransactionLine> transactions, [FromQuery(Name = "sortby")] string sortby)
+        public async Task<CustomResponse<IEnumerable<TransactionLine>>> Post([FromBody] IEnumerable<TransactionLine> transactions, [FromQuery(Name = "sortby")] BUSINESS_MODEL.TransactionSortBy sortby)
         {
             var result = new CustomResponse<IEnumerable<TransactionLine>>();
 
             try
             {
                 var processor = new TranasctionsProcessor(this._repo);
-                var businessTranactions = transactions.ToBusinessModel();
+                var businessTranactions = transactions.ToBusinessModel().ToList();
 
                 if (await processor.ValidateTransactions(businessTranactions))
                 {
-                    var sortedTransactions = await processor.SortTransactions(businessTranactions);
+                    var sortedTransactions = await processor.SortTransactions(businessTranactions, sortby);
                     result.Data = sortedTransactions.ToWebsiteModel();
                 }
                 else

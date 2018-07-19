@@ -17,36 +17,30 @@ namespace Microgen.Business.Accounting.Processors
             _repo = repo;
         }
 
-        public async Task<IEnumerable<TransactionLine>> SortTransactions(IEnumerable<TransactionLine> transactions, TransactionSortBy sortBy = TransactionSortBy.Value)
+        public async Task<IList<TransactionLine>> SortTransactions(IList<TransactionLine> transactions, TransactionSortBy sortBy = TransactionSortBy.Value)
         {
             foreach (var line in transactions)
             {
-                line.BaseRateValue = line.Value / await ConvertToBaseRate(line.Currency);
+                var rate = await ConvertToBaseRate(line.Currency);
+                var baseValue = line.Value / rate;
+                line.BaseRateValue = baseValue;
             }
-
-            switch (sortBy)
-            {
-                case TransactionSortBy.Date:
-                    //SortByValue(transactions);
-                    break;
-                default:
-
-                    SortByValue(transactions);
-                    break;
-            }
-
             return await Task.Run(() =>
             {
-                return transactions.AsEnumerable();
+                switch (sortBy)
+                {
+                    case TransactionSortBy.Date:
+                        return SortByDate(transactions);
+                    default:
+                        return SortByValue(transactions);
+                }
             });
         }
-
-
-
+        
         /// <summary>
         /// Ensure no transaction line has negative value
         /// </summary>
-        public async Task<bool> ValidateTransactions(IEnumerable<TransactionLine> transactions)
+        public async Task<bool> ValidateTransactions(IList<TransactionLine> transactions)
         {
             return await Task.Run(() =>
             {
@@ -68,9 +62,18 @@ namespace Microgen.Business.Accounting.Processors
         /// <summary>
         /// Sort transactions by the base rate value
         /// </summary>
-        private IEnumerable<TransactionLine> SortByValue(IEnumerable<TransactionLine> transactions)
+        private IList<TransactionLine> SortByValue(IList<TransactionLine> transactions)
         {
-                return transactions.OrderBy(t => t.BaseRateValue);
+                return transactions.OrderBy(t => t.BaseRateValue).ToList();
+        }
+
+
+        /// <summary>
+        /// Sort transactions by the date
+        /// </summary>
+        private IList<TransactionLine> SortByDate(IList<TransactionLine> transactions)
+        {
+            return transactions.OrderBy(t => t.Date).ToList();
         }
     }
 }
