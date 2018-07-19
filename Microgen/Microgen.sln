@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sites", "Sites", "{EC995ABA-D006-44B0-8D86-27FAEB730EF4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microgen.Sites.Interview", "Sites\Microgen.Sites.Interview\Microgen.Sites.Interview.csproj", "{54A37D74-D3B0-4BEC-AA6D-EAC22D4CDE41}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{CD580540-9047-4631-BA88-25B626D3782C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microgen.Business.Accounting", "Business\Microgen.Business.Accounting\Microgen.Business.Accounting.csproj", "{8BF4312A-08FA-4B5F-BD98-546B2C09AFD1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{124B50CA-17F5-4213-889D-BEE2EB68FA70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microgen.Tests.Business", "Microgen.Tests.Business\Microgen.Tests.Business.csproj", "{27F36F66-3EB6-4F5A-BFAC-13A07E071606}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{54A37D74-D3B0-4BEC-AA6D-EAC22D4CDE41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54A37D74-D3B0-4BEC-AA6D-EAC22D4CDE41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54A37D74-D3B0-4BEC-AA6D-EAC22D4CDE41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54A37D74-D3B0-4BEC-AA6D-EAC22D4CDE41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BF4312A-08FA-4B5F-BD98-546B2C09AFD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BF4312A-08FA-4B5F-BD98-546B2C09AFD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BF4312A-08FA-4B5F-BD98-546B2C09AFD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BF4312A-08FA-4B5F-BD98-546B2C09AFD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27F36F66-3EB6-4F5A-BFAC-13A07E071606}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27F36F66-3EB6-4F5A-BFAC-13A07E071606}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27F36F66-3EB6-4F5A-BFAC-13A07E071606}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27F36F66-3EB6-4F5A-BFAC-13A07E071606}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{54A37D74-D3B0-4BEC-AA6D-EAC22D4CDE41} = {EC995ABA-D006-44B0-8D86-27FAEB730EF4}
+		{8BF4312A-08FA-4B5F-BD98-546B2C09AFD1} = {CD580540-9047-4631-BA88-25B626D3782C}
+		{27F36F66-3EB6-4F5A-BFAC-13A07E071606} = {124B50CA-17F5-4213-889D-BEE2EB68FA70}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {965447D0-08EC-4A63-A323-DCB1A69BAF99}
+	EndGlobalSection
+EndGlobal
