@@ -13,3 +13,33 @@ The demo is writen as ASP.Net Core 2.1 app and utilises Angular 6 as the front e
 * Once nugets are restored select the "Microgen.Sites.Interview" as start up project and click run.
 
 
+## Site mapp
+Root home page:
+https://localhost:44315/
+
+### Api end point:
+Method: Post
+
+Headers: Content-Type - application/json
+
+Url: https://localhost:44315/api/transactions?sortby=value
+
+Body: 
+```json
+	[
+		 {  
+		 	"value": 123.56,
+			"currency": "usd",
+			"date": "2012-04-23T18:25:43.511Z",
+			"sourceAccNo": "123456789",
+            "destinationAccNo": "987654321"
+		 },
+		 {  
+		 	"value": 321.56,
+			"currency": "eur",
+			"date": "2012-04-23T18:25:43.511Z",
+			"sourceAccNo": "123456789",
+            "destinationAccNo": "987654321"
+		 }
+	]
+  ```
