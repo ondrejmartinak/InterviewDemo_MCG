@@ -17,31 +17,46 @@ There mstest is used to test important business logic
 
 ## Site mapp
 Root home page:
-https://localhost:44315/
+http://localhost:5000/
 
 ### Api end point:
 Method: Post
 
 Headers: Content-Type - application/json
 
-Url: https://localhost:44315/api/transactions?sortby=value
+Url: http://localhost:5000/api/transactions?sortby=value  
 
 Body: 
 ```json
 	[
-		 {  
-		 	"value": 123.56,
-			"currency": "usd",
-			"date": "2012-04-23T18:25:43.511Z",
-			"sourceAccNo": "123456789",
+	 {  
+	    "value": 123.56,
+	    "currency": "gbp",
+	    "date": "2012-04-23T18:25:43.511Z",
+            "sourceAccNo": "123456789",
             "destinationAccNo": "987654321"
-		 },
-		 {  
-		 	"value": 321.56,
-			"currency": "eur",
-			"date": "2012-04-23T18:25:43.511Z",
-			"sourceAccNo": "123456789",
+	 },
+	 {  
+	    "value": 123.56,
+	    "currency": "usd",
+	    "date": "2012-04-23T18:25:43.511Z",
+	    "sourceAccNo": "123456789",
             "destinationAccNo": "987654321"
-		 }
+	 },
+	 {  
+	    "value": 321.56,
+	    "currency": "usd",
+	    "date": "2012-04-23T18:25:43.511Z",
+	    "sourceAccNo": "123456789",
+            "destinationAccNo": "987654321"
+	 }
 	]
   ```
+## Running the application 
+* Extract the zip file - demo_app.zip
+* navigate to ./win-x86 and start Microgen.Sites.Interview.exe
+* open postman or other rest clients and use the example header and body as per above
+
+Url example: http://localhost:5000/api/transactions?sortby=value  - sort transactions by value
+
+Url example: http://localhost:5000/api/transactions?sortby=date  - sort transactions by date
