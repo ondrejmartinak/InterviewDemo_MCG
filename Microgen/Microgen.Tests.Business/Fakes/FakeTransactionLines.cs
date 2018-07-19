@@ -22,7 +22,7 @@ namespace Microgen.Tests.Business.Fakes
                         new TransactionLine
                             {
                                 Currency = "gbp",
-                                Date = DateTime.Now,
+                                Date = DateTime.Now.AddHours(2),
                                 DestinationAccNo =  "dest123gbp",
                                 SourceAccNo = "source123gbp",
                                 Value = 123.06m
@@ -30,10 +30,10 @@ namespace Microgen.Tests.Business.Fakes
                             new TransactionLine
                             {
                                 Currency = "usd",
-                                Date = DateTime.Now,
+                                Date = DateTime.Now.AddHours(1),
                                 DestinationAccNo =  "dest4567",
                                 SourceAccNo = "source4567",
-                                Value = 120.06m
+                                Value = 220.06m
                                 }
                         };
         }
