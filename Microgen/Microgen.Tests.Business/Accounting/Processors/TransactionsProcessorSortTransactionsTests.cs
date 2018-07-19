@@ -2,9 +2,7 @@
 using Microgen.Business.Accounting.Processors;
 using Microgen.Tests.Business.Fakes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Microgen.Tests.Business.Processors
 {
@@ -16,7 +14,11 @@ namespace Microgen.Tests.Business.Processors
         [DataTestMethod]
         public void SortTransactions_test()
         {
-            var result = TranasctionsProcessor.SortTransactions(transactions).Result;
+            var processor = new TranasctionsProcessor(new FakeCurrenciesRepo());
+
+
+
+            var result = processor.SortTransactions(transactions).Result;
         }
     }
 }

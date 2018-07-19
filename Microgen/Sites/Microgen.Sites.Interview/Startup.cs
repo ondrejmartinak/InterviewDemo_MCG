@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microgen.Business.Accounting.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -31,6 +32,9 @@ namespace Microgen.Sites.Interview
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            // Dependency injection resolver
+            services.AddTransient<ICurrenciesRepo, CurrenciesRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

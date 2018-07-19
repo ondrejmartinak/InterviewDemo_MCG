@@ -16,13 +16,16 @@ namespace Microgen.Tests.Business.Processors
         [DataTestMethod]
         public void TranasctionsProcessor_ValidateTransactions_test()
         {
+            var processor = new TranasctionsProcessor(new FakeCurrenciesRepo());
             // Test good transactions
-            TranasctionsProcessor.ValidateTransactions(transactions).Result.ShouldBe(true);
+            processor.ValidateTransactions(transactions).Result.ShouldBe(true);
         }
 
         [DataTestMethod]
         public void InvalidTranasctionsProcessor_ValidateTransactions_test()
         {
+            var processor = new TranasctionsProcessor(new FakeCurrenciesRepo());
+
             // Add invalid transaction
             transactions.Add(new TransactionLine
             {
@@ -34,7 +37,7 @@ namespace Microgen.Tests.Business.Processors
             });
 
             // Test invalid transactions
-            TranasctionsProcessor.ValidateTransactions(transactions).Result.ShouldBe(false);
+            processor.ValidateTransactions(transactions).Result.ShouldBe(false);
         }
         
 

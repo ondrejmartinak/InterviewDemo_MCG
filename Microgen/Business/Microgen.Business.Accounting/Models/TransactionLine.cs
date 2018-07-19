@@ -10,6 +10,11 @@ namespace Microgen.Business.Accounting.Models
         public decimal Value { get; set; }
 
         /// <summary>
+        /// Base Rate Transaction financial value (ammount)
+        /// </summary>
+        public decimal BaseRateValue { get; set; }
+
+        /// <summary>
         /// Currency
         /// </summary>
         public string Currency { get; set; }

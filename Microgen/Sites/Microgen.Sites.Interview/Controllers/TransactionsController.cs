@@ -1,4 +1,7 @@
-﻿using Microgen.Sites.Interview.Models;
+﻿using Microgen.Business.Accounting.Exceptions;
+using Microgen.Business.Accounting.Processors;
+using Microgen.Business.Accounting.Repositories;
+using Microgen.Sites.Interview.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,16 +13,47 @@ namespace Microgen.Sites.Interview.Controllers
     [ApiController]
     public class TransactionsController : ControllerBase
     {
+        private readonly ICurrenciesRepo _repo;
+
+        public TransactionsController(ICurrenciesRepo repo)
+        {
+            this._repo = repo;
+        }
+
         // POST api/values
         [HttpPost]
-        public async Task<CustomResponse<List<TransactionLine>>> Post([FromBody] IEnumerable<TransactionLine> transactions, [FromQuery(Name = "sortby")] string sortby)
+        public async Task<CustomResponse<IEnumerable<TransactionLine>>> Post([FromBody] IEnumerable<TransactionLine> transactions, [FromQuery(Name = "sortby")] string sortby)
         {
-            return await Task.Run(() => {
-                var contactList = transactions.ToList();
-                return new CustomResponse<List<TransactionLine>>
+            var result = new CustomResponse<IEnumerable<TransactionLine>>();
+
+            try
+            {
+                var processor = new TranasctionsProcessor(this._repo);
+                var businessTranactions = transactions.ToBusinessModel();
+
+                if (await processor.ValidateTransactions(businessTranactions))
                 {
-                    Data = transactions.ToList()
-                };
+                    var sortedTransactions = await processor.SortTransactions(businessTranactions);
+                    result.Data = sortedTransactions.ToWebsiteModel();
+                }
+                else
+                {
+                    result.Errors = new List<string> { "Invalid transaction found. Negative transaction value is not allowed" };
+                }
+            }
+            catch(CurrencyNotFountException ex)
+            {
+                result.Errors = new List<string> {ex.Message };
+
+            }
+            catch
+            {
+                // TODO LOG the incident to the propriet log storage for future analysis
+                result.Errors = new List<string> { "Ups there was an error in our system. Please try again or later." };
+            }
+
+            return await Task.Run(() => {
+                return result;
             });
         }
     }
