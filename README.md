@@ -12,6 +12,8 @@ The demo is writen as ASP.Net Core 2.1 app and utilises Angular 6 as the front e
 * Open the Microgen.sln in Visual Studio IDE (First time the solution isopened Visual Studio will restore nuget packages, this will take while)
 * Once nugets are restored select the "Microgen.Sites.Interview" as start up project and click run.
 
+## Code quality
+There mstest is used to test important business logic
 
 ## Site mapp
 Root home page:
