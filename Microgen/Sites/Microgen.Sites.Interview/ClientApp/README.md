@@ -25,3 +25,32 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+
+Scenario Outline: Register with valid details
+    Given I am on the registration page
+        And I have completed the form with <email> <organisation> <password> and <passwordConfirmation>
+    When I have clicked on the register button
+    Then I will be logged in as <username>
+        And my account will be assigned the role of <role>
+
+        Examples: 
+        | email     | organisation | password  | passwordConfirmation | username  | role  |
+        | usernamea | Bytes        | password1 | password1            | usernamea | Admin |
+        | usernameb | Bytes        | password2 | password2            | usernameb | Admin |
+        | usernamec | Bytes        | password3 | password3            | usernamec | Admin |
+        | usernamed | Bytes        | password4 | password4            | usernamed | Admin |
+        | usernamee | Bytes        | password5 | password5            | usernamee | Admin |
+
+Scenario Outline: Register with invalid details
+    Given I am on the registration page
+        And I have completed the form with <email> <organisation> <password> and <passwordConfirmation>
+    When I have clicked on the register button
+    Then I will get an error message
+
+        Examples: 
+        | email             | organisation    | password   | passwordConfirmation | 
+        | Jonesa@mojito.com | Bytes           | 1LTIuta&Sc | wrongpassword      | 
+        | Jonesb@mojito.com | Bytes           | 1LTIuta&Sc | 1LTIuta&Sc         | 
+        | Jonesc@mojito.com | No Organisation | 1LTIuta&Sc | 1LTIuta&Sc         | 
