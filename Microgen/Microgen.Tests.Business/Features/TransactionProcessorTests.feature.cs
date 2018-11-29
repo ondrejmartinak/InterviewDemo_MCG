@@ -122,16 +122,16 @@ this.GetCurrencyBaserate("\"usd\"", "1.0", ((string[])(null)));
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Get currency baserate: \"btc\"")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Get currency baserate: \"gbp\"")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AccountingProcessorTests")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("AccountingProcessorTests")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "\"btc\"")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:currency", "\"btc\"")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "\"gbp\"")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:currency", "\"gbp\"")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:rate", "0.77")]
-        public virtual void GetCurrencyBaserate_Btc()
+        public virtual void GetCurrencyBaserate_Gbp()
         {
 #line 7
-this.GetCurrencyBaserate("\"btc\"", "0.77", ((string[])(null)));
+this.GetCurrencyBaserate("\"gbp\"", "0.77", ((string[])(null)));
 #line hidden
         }
     }

@@ -13,4 +13,4 @@ Scenario Outline: Get currency baserate
 	Examples: 
         | currency | rate | 
         | "usd"    | 1.0  | 
-        | "btc"    | 0.77 | 
+        | "gbp"    | 0.77 | 
